@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="docs/images/chiv-pi/brand-hero.jpg" alt="chiv-pi coral and gold brand wordmark" width="900">
+  <img src="docs/images/chiv-pi/logo.svg" alt="chiv-pi terminal mark" width="128">
+</p>
+<p align="center">
+  <a href="https://www.npmjs.com/package/@chivopic/chiv-pi"><img alt="npm version" src="https://img.shields.io/npm/v/@chivopic/chiv-pi?style=flat-square" /></a>
+  <a href="../../LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
 </p>
 
 # chiv-pi

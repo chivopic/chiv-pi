@@ -4,6 +4,7 @@ The README uses two brand renders and two captured screens from the published `@
 
 | Asset | Source |
 |-------|--------|
+| [Terminal mark](images/chiv-pi/logo.svg) | Repository SVG based on the CLI's coral and gold wordmark colors |
 | [Brand hero](images/chiv-pi/brand-hero.jpg) | Built-in imagegen; JPEG quality 88 |
 | [Terminal concept](images/chiv-pi/brand-terminal.jpg) | Built-in imagegen with the hero as a palette and wordmark reference; JPEG quality 88 |
 | [Interactive screenshot](images/chiv-pi/interactive.png) | Real CLI output captured by tmux and rendered from ANSI text to PNG |
