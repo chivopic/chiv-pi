@@ -2,9 +2,19 @@
 
 ## [Unreleased]
 
+### New Features
+
+- [chiv-pi branding and source CLI](README.md#getting-started), with the `chiv-pi` command and independent `.chiv-pi` configuration directories.
+- [Scoped npm installation](docs/npm-release.md) through `@chivopic/chiv-pi`, with its own npm update channel.
+
+### Added
+
+- Added an isolated npm packaging command for `@chivopic/chiv-pi`, preserving the workspace package names and dependency lock while including the fork's install instructions and original MIT license.
+
 ### Changed
 
 - Rebranded the source CLI as chiv-pi, with the `chiv-pi` executable, `.chiv-pi` configuration directory, shell-safe `CHIV_PI` environment variable prefix, and application-specific system prompt and process markers.
+- Fork npm installations check their own package's latest version and keep self updates on that package.
 - `/arminsayshi` now plays a 3D version in fullscreen mode, with one cube per pixel of Armin. The 3D pi logo easter egg on header logo click is replaced by it.
 
 ## [1.0.0] - 2026-10-01

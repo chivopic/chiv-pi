@@ -9,10 +9,18 @@ import {
 } from "../src/utils/version-check.ts";
 import { allowNetwork } from "./test-network-env.ts";
 
+const packageIdentity = vi.hoisted(() => ({ name: "@earendil-works/pi-coding-agent" }));
+vi.mock("../src/config.ts", () => ({
+	get PACKAGE_NAME() {
+		return packageIdentity.name;
+	},
+}));
+
 const originalSkipVersionCheck = process.env.PI_SKIP_VERSION_CHECK;
 
 beforeEach(() => {
 	allowNetwork();
+	packageIdentity.name = "@earendil-works/pi-coding-agent";
 });
 
 afterEach(() => {
@@ -68,6 +76,23 @@ describe("version checks", () => {
 
 		await expect(getLatestPiRelease("1.2.3", { retry: true })).resolves.toEqual({ version: "1.2.4" });
 		expect(fetchMock).toHaveBeenCalledTimes(3);
+	});
+
+	it("checks the fork's npm release and keeps self updates on its own package", async () => {
+		packageIdentity.name = "@chivopic/chiv-pi";
+		const fetchMock = vi.fn(async () =>
+			Response.json({ version: "1.0.1", packageName: "@earendil-works/pi-coding-agent" }),
+		);
+		vi.stubGlobal("fetch", fetchMock);
+
+		await expect(checkForNewPiVersion("1.0.0")).resolves.toEqual({
+			version: "1.0.1",
+			packageName: "@chivopic/chiv-pi",
+		});
+		expect(fetchMock).toHaveBeenCalledWith(
+			"https://registry.npmjs.org/%40chivopic%2Fchiv-pi/latest",
+			expect.any(Object),
+		);
 	});
 
 	it("keeps automatic version checks to one request", async () => {

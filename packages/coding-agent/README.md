@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/images/chiv-pi/brand-hero.jpg" alt="chiv-pi coral and gold brand wordmark" width="900">
+</p>
+
 # chiv-pi
 
 chiv-pi is a terminal AI coding agent based on [Pi v1.0.0](https://github.com/earendil-works/pi/tree/v1.0.0).
@@ -23,13 +27,32 @@ cd /path/to/project
 /path/to/chiv-pi/chiv-pi
 ```
 
-The built package exposes the `chiv-pi` executable. This fork currently retains the internal `@earendil-works/*` package names and upstream hosted services. Public upstream packages and installers install Pi; an independent chiv-pi distribution and update channel have not been configured.
+The public npm package is [`@chivopic/chiv-pi`](https://www.npmjs.com/package/@chivopic/chiv-pi), starting at version `1.0.0`. Install and run it from your project directory:
+
+```bash
+npm install -g --ignore-scripts @chivopic/chiv-pi
+chiv-pi
+```
+
+See [npm release instructions](docs/npm-release.md). This fork retains the internal `@earendil-works/*` workspace names and upstream hosted services. Public upstream packages and installers install Pi.
 
 Run `/login` inside chiv-pi to connect a subscription or API key, then give it a task.
 
 User settings, credentials, sessions, and resources live in `~/.chiv-pi/agent/`. Project resources live in `.chiv-pi/`. Override these locations with `CHIV_PI_CODING_AGENT_DIR` and `CHIV_PI_CODING_AGENT_SESSION_DIR`. Existing `.pi` configuration is not loaded automatically.
 
 See the [documentation](docs/index.md) for full setup and usage instructions.
+
+## Preview
+
+The published `chiv-pi v1.0.0` CLI reading a sample file and explaining its code:
+
+![chiv-pi reading code and showing tool results](docs/images/chiv-pi/interactive.png)
+
+Choose a model from a configured provider with `/model`:
+
+![chiv-pi model selector](docs/images/chiv-pi/model-picker.png)
+
+The [brand renders and capture notes](docs/branding.md) describe the visual assets. Use the [terminal guide](docs/usage.md) for interactive features.
 
 ## Development
 

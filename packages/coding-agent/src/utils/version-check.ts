@@ -1,4 +1,5 @@
 import { compare, valid } from "semver";
+import { PACKAGE_NAME } from "../config.ts";
 import { fetchWithRetry } from "./management-http.ts";
 import { getPiUserAgent } from "./pi-user-agent.ts";
 
@@ -54,8 +55,9 @@ export async function getLatestPiRelease(
 ): Promise<LatestPiRelease | undefined> {
 	if (process.env.PI_OFFLINE) return undefined;
 
+	const isUpstreamPackage = PACKAGE_NAME === "@earendil-works/pi-coding-agent";
 	const response = await fetchWithRetry(
-		LATEST_VERSION_URL,
+		isUpstreamPackage ? LATEST_VERSION_URL : `https://registry.npmjs.org/${encodeURIComponent(PACKAGE_NAME)}/latest`,
 		{
 			headers: {
 				"User-Agent": getPiUserAgent(currentVersion),
@@ -77,8 +79,11 @@ export async function getLatestPiRelease(
 	if (typeof data.version !== "string" || !data.version.trim()) {
 		return undefined;
 	}
-	const packageName =
-		typeof data.packageName === "string" && data.packageName.trim() ? data.packageName.trim() : undefined;
+	const packageName = isUpstreamPackage
+		? typeof data.packageName === "string" && data.packageName.trim()
+			? data.packageName.trim()
+			: undefined
+		: PACKAGE_NAME;
 	const note = typeof data.note === "string" && data.note.trim() ? data.note.trim() : undefined;
 	return {
 		version: data.version.trim(),

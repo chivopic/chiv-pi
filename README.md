@@ -1,8 +1,49 @@
+<p align="center">
+  <img src="packages/coding-agent/docs/images/chiv-pi/brand-hero.jpg" alt="chiv-pi 珊瑚色与暖金色品牌字标" width="900">
+</p>
+
 # chiv-pi
 
 chiv-pi 是基于 [Pi v1.0.0](https://github.com/earendil-works/pi/tree/v1.0.0) 改造的终端 AI 编程助手，支持文件读写、命令执行、会话管理、模型切换和扩展。
 
-当前阶段完成应用品牌与源码入口定制。内部 npm 包名和托管服务仍沿用上游；上游 npm 包与安装器安装的是 Pi。独立发布与更新渠道尚未配置。
+当前阶段完成应用品牌与源码入口定制。独立 npm 包 [`@chivopic/chiv-pi`](https://www.npmjs.com/package/@chivopic/chiv-pi) 已发布，首个版本为 `1.0.0`；内部源码包名和托管服务仍沿用上游。上游 npm 包与安装器安装的是 Pi。
+
+## 快速开始
+
+通过 npm 安装并启动：
+
+```bash
+npm install -g --ignore-scripts @chivopic/chiv-pi
+cd /path/to/your/project
+chiv-pi
+```
+
+在终端中运行 `/login` 连接模型服务，用 `/model` 选择模型，然后直接输入任务。
+
+## 功能与界面
+
+- 读取、修改项目文件，并运行命令验证结果。
+- 切换模型，继续或分支会话。
+- 通过技能、扩展和 MCP 定制工作流。
+- 使用 print、JSON、RPC 模式或 TypeScript SDK 集成到脚本和应用。
+
+以下是已发布的 `chiv-pi v1.0.0` 读取示例代码并回复时的真实终端画面：
+
+![chiv-pi 的文件读取、工具输出和模型回复](packages/coding-agent/docs/images/chiv-pi/interactive.png)
+
+使用 `/model` 选择已配置服务商的模型：
+
+![chiv-pi 模型选择器](packages/coding-agent/docs/images/chiv-pi/model-picker.png)
+
+## 品牌视觉
+
+字标沿用 CLI 的珊瑚色首字母与暖金色文字。这张终端提示符概念渲染用于展示品牌视觉：
+
+<p align="center">
+  <img src="packages/coding-agent/docs/images/chiv-pi/brand-terminal.jpg" alt="chiv-pi 终端提示符品牌概念渲染" width="420">
+</p>
+
+图片来源与制作说明见 [视觉素材](packages/coding-agent/docs/branding.md)。使用说明见 [终端操作](packages/coding-agent/docs/usage.md)、[模型选择](packages/coding-agent/docs/models.md) 和 [会话管理](packages/coding-agent/docs/sessions.md)。发布流程见 [npm 发布说明](packages/coding-agent/docs/npm-release.md)。
 
 ## 本地启动
 
