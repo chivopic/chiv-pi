@@ -1,24 +1,27 @@
 <p align="center">
-  <img src="packages/coding-agent/docs/images/chiv-pi/logo.svg" alt="chiv-pi 标识" width="128">
+  <img src="packages/coding-agent/docs/images/chiv-pi/logo.svg" alt="chiv-pi logo" width="128">
 </p>
 <p align="center">
-  <a href="https://www.npmjs.com/package/@chivopic/chiv-pi"><img alt="npm 版本" src="https://img.shields.io/npm/v/@chivopic/chiv-pi?style=flat-square" /></a>
-  <a href="LICENSE"><img alt="MIT 许可证" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@chivopic/chiv-pi"><img alt="npm version" src="https://img.shields.io/npm/v/@chivopic/chiv-pi?style=flat-square" /></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
+</p>
+<p align="center">
+  English | <a href="README.zh-CN.md">Simplified Chinese</a>
 </p>
 
-> 基于 [Pi v1.0.0](https://github.com/earendil-works/pi/tree/v1.0.0) 改造。公开 npm 包、命令和配置目录使用 chiv-pi；内部源码包名及托管服务仍沿用上游。
+> Based on [Pi v1.0.0](https://github.com/earendil-works/pi/tree/v1.0.0). The public npm package, command, and configuration directories use chiv-pi; internal workspace package names and hosted services retain their upstream names.
 
 # chiv-pi Agent Harness
 
-这是 chiv-pi 终端 AI 编程助手的源码仓库。它可以读取和修改项目文件、运行命令、管理会话，并通过技能和扩展适配工作流。
+This repository contains the chiv-pi terminal AI coding agent. It can read and edit project files, run commands, manage sessions, and adapt to workflows through skills and extensions.
 
-* **[`@chivopic/chiv-pi`](https://www.npmjs.com/package/@chivopic/chiv-pi)**：公开发布的 CLI 和 SDK，运行命令为 `chiv-pi`
-* **[@earendil-works/pi-agent-core](packages/agent)**：工具调用和状态管理运行时
-* **[@earendil-works/pi-ai](packages/ai)**：多服务商模型接口
+* **[`@chivopic/chiv-pi`](https://www.npmjs.com/package/@chivopic/chiv-pi)**: Published CLI and SDK; run it with `chiv-pi`
+* **[@earendil-works/pi-agent-core](packages/agent)**: Agent runtime with tool calling and state management
+* **[@earendil-works/pi-ai](packages/ai)**: Unified multi-provider model API
 
-## 快速开始
+## Quick start
 
-通过 npm 安装并启动：
+Install from npm and start the agent:
 
 ```bash
 npm install -g --ignore-scripts @chivopic/chiv-pi
@@ -26,38 +29,26 @@ cd /path/to/your/project
 chiv-pi
 ```
 
-在终端中运行 `/login` 连接模型服务，用 `/model` 选择模型，然后直接输入任务。
+Run `/login` in the terminal to connect a model provider, select a model with `/model`, and enter a task.
 
-## 界面预览
+## Preview
 
-- 读取、修改项目文件，并运行命令验证结果。
-- 切换模型，继续或分支会话。
-- 通过技能、扩展和 MCP 定制工作流。
-- 使用 print、JSON、RPC 模式或 TypeScript SDK 集成到脚本和应用。
+- Read and edit project files, then verify the results by running commands.
+- Switch models and resume or branch sessions.
+- Customize workflows with skills, extensions, and MCP.
+- Integrate with scripts and applications through print, JSON, or RPC mode, or the TypeScript SDK.
 
-已发布的 `chiv-pi v1.0.0` 实际终端画面，点击可放大：
+Captured screens from the published `chiv-pi v1.0.0` CLI. Click an image to enlarge it:
 
-| 读取文件并解释代码 | 选择模型 |
+| Read a file and explain code | Select a model |
 |:---:|:---:|
-| <a href="packages/coding-agent/docs/images/chiv-pi/interactive.png"><img src="packages/coding-agent/docs/images/chiv-pi/interactive.png" alt="chiv-pi 的工具输出和模型回复" width="420"></a> | <a href="packages/coding-agent/docs/images/chiv-pi/model-picker.png"><img src="packages/coding-agent/docs/images/chiv-pi/model-picker.png" alt="chiv-pi 模型选择器" width="420"></a> |
+| <a href="packages/coding-agent/docs/images/chiv-pi/interactive.png"><img src="packages/coding-agent/docs/images/chiv-pi/interactive.png" alt="chiv-pi tool output and model response" width="420"></a> | <a href="packages/coding-agent/docs/images/chiv-pi/model-picker.png"><img src="packages/coding-agent/docs/images/chiv-pi/model-picker.png" alt="chiv-pi model picker" width="420"></a> |
 
-使用说明见 [终端操作](packages/coding-agent/docs/usage.md)、[模型选择](packages/coding-agent/docs/models.md) 和 [会话管理](packages/coding-agent/docs/sessions.md)。发布流程见 [npm 发布说明](packages/coding-agent/docs/npm-release.md)。
+See the guides for [terminal use](packages/coding-agent/docs/usage.md), [model selection](packages/coding-agent/docs/models.md), and [session management](packages/coding-agent/docs/sessions.md). The [npm release guide](packages/coding-agent/docs/npm-release.md) covers publishing.
 
-<details>
-<summary>品牌渲染图</summary>
+## Run from source
 
-<p align="center">
-  <img src="packages/coding-agent/docs/images/chiv-pi/brand-hero.jpg" alt="chiv-pi 品牌字标渲染" width="540">
-  <img src="packages/coding-agent/docs/images/chiv-pi/brand-terminal.jpg" alt="chiv-pi 终端提示符品牌概念渲染" width="260">
-</p>
-
-图片来源与提示词见 [视觉素材](packages/coding-agent/docs/branding.md)。
-
-</details>
-
-## 本地启动
-
-需要 Node.js 22.19 或更新版本。在仓库根目录安装依赖并启动：
+Node.js 22.19 or newer is required. Install dependencies and start the agent from the repository root:
 
 ```bash
 npm install --ignore-scripts
@@ -65,28 +56,28 @@ npm run hydrate:model-data
 npm start
 ```
 
-也可以从任意工作目录调用源码入口，它会保留调用时的工作目录：
+You can also call the source launcher from any working directory. It preserves that directory:
 
 ```bash
 /path/to/chiv-pi/chiv-pi
 /path/to/chiv-pi/chiv-pi --help
 ```
 
-启动后使用 `/login` 配置模型服务，或设置服务商对应的 API key 环境变量。
+After launch, use `/login` to configure a model provider or set its API key environment variable.
 
-## 配置与会话
+## Configuration and sessions
 
-| 用途 | 路径或环境变量 |
+| Purpose | Path or environment variable |
 |------|----------------|
-| 用户配置、凭据和资源 | `~/.chiv-pi/agent/` |
-| 项目配置和资源 | `<项目>/.chiv-pi/` |
-| 用户配置目录覆盖 | `CHIV_PI_CODING_AGENT_DIR` |
-| 会话目录覆盖 | `CHIV_PI_CODING_AGENT_SESSION_DIR` |
-| 子进程标记 | `AI_AGENT=chiv-pi`、`CHIV_PI_CODING_AGENT=true` |
+| User settings, credentials, and resources | `~/.chiv-pi/agent/` |
+| Project settings and resources | `<project>/.chiv-pi/` |
+| User configuration directory override | `CHIV_PI_CODING_AGENT_DIR` |
+| Session directory override | `CHIV_PI_CODING_AGENT_SESSION_DIR` |
+| Child process markers | `AI_AGENT=chiv-pi`, `CHIV_PI_CODING_AGENT=true` |
 
-chiv-pi 使用独立配置目录，不会自动读取 `~/.pi/agent` 或项目中的 `.pi` 资源。需要的设置和扩展应放入对应的 `.chiv-pi` 目录。
+chiv-pi uses separate configuration directories. It does not automatically read `~/.pi/agent` or project `.pi` resources. Put the settings and extensions you need in the corresponding `.chiv-pi` directory.
 
-内部 coding-agent 源码包仍使用 [@earendil-works/pi-coding-agent](packages/coding-agent) 名称。上游 Pi 资料：
+The internal coding-agent source package retains the name [@earendil-works/pi-coding-agent](packages/coding-agent). Upstream Pi resources:
 
 * [Visit pi.dev](https://pi.dev), the project website with demos
 * [Read the documentation](https://pi.dev/docs/latest), but you can also ask the agent to explain itself

@@ -5,6 +5,9 @@
   <a href="https://www.npmjs.com/package/@chivopic/chiv-pi"><img alt="npm version" src="https://img.shields.io/npm/v/@chivopic/chiv-pi?style=flat-square" /></a>
   <a href="../../LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
 </p>
+<p align="center">
+  English | <a href="https://github.com/chivopic/chiv-pi/blob/main/README.zh-CN.md">Simplified Chinese</a>
+</p>
 
 # chiv-pi
 
@@ -56,7 +59,7 @@ Choose a model from a configured provider with `/model`:
 
 ![chiv-pi model selector](docs/images/chiv-pi/model-picker.png)
 
-The [brand renders and capture notes](docs/branding.md) describe the visual assets. Use the [terminal guide](docs/usage.md) for interactive features.
+Use the [terminal guide](docs/usage.md) for interactive features.
 
 ## Development
 

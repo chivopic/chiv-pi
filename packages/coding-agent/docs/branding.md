@@ -1,6 +1,6 @@
 # chiv-pi visual assets
 
-The README uses two brand renders and two captured screens from the published `@chivopic/chiv-pi@1.0.0` CLI.
+The README uses two captured screens from the published `@chivopic/chiv-pi@1.0.0` CLI. The brand renders are retained here as separate visual assets.
 
 | Asset | Source |
 |-------|--------|
