@@ -1,60 +1,47 @@
-<p align="center">
-  <a href="https://pi.dev">
-    <img alt="Pi logo" src="https://pi.dev/logo-auto.svg" width="128">
-  </a>
-</p>
-<p align="center">
-  <a href="https://discord.com/invite/3cU7Bz4UPx"><img alt="Discord" src="https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white" /></a>
-  <a href="https://www.npmjs.com/package/@earendil-works/pi-coding-agent"><img alt="npm" src="https://img.shields.io/npm/v/@earendil-works/pi-coding-agent?style=flat-square&logo=npm&logoColor=white" /></a>
-</p>
+# chiv-pi
 
-> New issues and PRs from new contributors are closed automatically. Maintainers review closed submissions daily. See [CONTRIBUTING.md](https://github.com/earendil-works/pi/blob/main/CONTRIBUTING.md).
+chiv-pi is a terminal AI coding agent based on [Pi v1.0.0](https://github.com/earendil-works/pi/tree/v1.0.0).
 
-# Pi
-
-Pi is a minimal, extensible AI agent for the terminal. Adapt Pi to your workflow, not the other way around.
-
-Ask Pi to create the prompt templates, skills, extensions, and themes you need, or install a Pi package. Use Pi directly, automate it in print, JSON, or RPC mode, or build applications with the TypeScript SDK.
+Ask chiv-pi to create the prompt templates, skills, extensions, and themes you need, or install an extension package. Use it directly, automate it in print, JSON, or RPC mode, or build applications with the TypeScript SDK.
 
 ## Getting started
 
-Install the command-line interface with npm:
+From the repository root, install dependencies and start the source CLI:
 
 ```bash
-npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+npm install --ignore-scripts
+npm run hydrate:model-data
+npm start
 ```
 
-This requires Node.js 22.19 or newer. Pi does not require dependency lifecycle scripts for a normal npm installation.
+This requires Node.js 22.19 or newer. Dependency lifecycle scripts are not needed.
 
-On macOS or Linux, you can instead use the installer:
-
-```bash
-curl -fsSL https://pi.dev/install.sh | sh
-```
-
-Start Pi in the directory where you want it to work:
+On macOS or Linux, call the source launcher from your project directory:
 
 ```bash
 cd /path/to/project
-pi
+/path/to/chiv-pi/chiv-pi
 ```
 
-For a built-in AI provider, run `/login` inside Pi to connect a subscription or API key. Then give Pi a task.
+The built package exposes the `chiv-pi` executable. This fork currently retains the internal `@earendil-works/*` package names and upstream hosted services. Public upstream packages and installers install Pi; an independent chiv-pi distribution and update channel have not been configured.
+
+Run `/login` inside chiv-pi to connect a subscription or API key, then give it a task.
+
+User settings, credentials, sessions, and resources live in `~/.chiv-pi/agent/`. Project resources live in `.chiv-pi/`. Override these locations with `CHIV_PI_CODING_AGENT_DIR` and `CHIV_PI_CODING_AGENT_SESSION_DIR`. Existing `.pi` configuration is not loaded automatically.
 
 See the [documentation](docs/index.md) for full setup and usage instructions.
 
 ## Development
 
-Clone the repository, install its dependencies, and run Pi from source:
+From this checkout, run chiv-pi from source:
 
 ```bash
-git clone https://github.com/earendil-works/pi
-cd pi
 npm install --ignore-scripts
-./pi-test.sh
+npm run hydrate:model-data
+./chiv-pi
 ```
 
-`pi-test.sh` can be called from any directory and preserves the caller's working directory.
+`chiv-pi` can be called from any directory and preserves the caller's working directory. `pi-test.sh` remains the upstream experimental development entry point.
 
 Before submitting changes, run:
 

@@ -1,4 +1,6 @@
-# Pi
+# chiv-pi
+
+This fork uses the `chiv-pi` command, `~/.chiv-pi/agent/` for user resources, and `.chiv-pi/` for project resources. Inherited reference pages may still use `pi` and `.pi`; substitute the chiv-pi command and paths. Internal SDK package names remain `@earendil-works/*`. See the [README](../README.md) for source setup; upstream public installers install Pi.
 
 Pi is an extensible AI agent that works from your terminal. Give it a goal and a working folder, and it can inspect files, run commands, edit content, and work through multi-step tasks.
 

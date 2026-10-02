@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Rebranded the source CLI as chiv-pi, with the `chiv-pi` executable, `.chiv-pi` configuration directory, shell-safe `CHIV_PI` environment variable prefix, and application-specific system prompt and process markers.
 - `/arminsayshi` now plays a 3D version in fullscreen mode, with one cube per pixel of Armin. The 3D pi logo easter egg on header logo click is replaced by it.
 
 ## [1.0.0] - 2026-10-01

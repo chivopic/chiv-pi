@@ -4,15 +4,21 @@ import { delimiter, join } from "path";
 import { afterEach, describe, expect, test } from "vitest";
 import {
 	detectInstallMethod,
+	ENV_AGENT_DIR,
 	findNodePackageDir,
+	getAgentDir,
+	getDebugLogPath,
 	getSelfUpdateCommand,
 	getSelfUpdateUnavailableInstruction,
+	getSessionsDir,
+	getSettingsPath,
 	getUpdateInstruction,
 } from "../src/config.ts";
 
 const execPathDescriptor = Object.getOwnPropertyDescriptor(process, "execPath");
 const originalPath = process.env.PATH;
 const originalPiPackageDir = process.env.PI_PACKAGE_DIR;
+const originalAgentDir = process.env[ENV_AGENT_DIR];
 const originalArgv1 = process.argv[1];
 let tempDir: string | undefined;
 
@@ -36,6 +42,11 @@ afterEach(() => {
 		delete process.env.PI_PACKAGE_DIR;
 	} else {
 		process.env.PI_PACKAGE_DIR = originalPiPackageDir;
+	}
+	if (originalAgentDir === undefined) {
+		delete process.env[ENV_AGENT_DIR];
+	} else {
+		process.env[ENV_AGENT_DIR] = originalAgentDir;
 	}
 	if (originalArgv1 === undefined) {
 		process.argv.splice(1, 1);
@@ -156,6 +167,18 @@ describe("findNodePackageDir", () => {
 		writeFileSync(join(distDir, "package.json"), "{}");
 
 		expect(findNodePackageDir(bundleDir)).toBe(tempDir);
+	});
+});
+
+describe("chiv-pi config directory", () => {
+	test("applies a shell-safe directory override to settings, sessions, and debug logs", () => {
+		tempDir = mkdtempSync(join(tmpdir(), "chiv-pi-config-"));
+		process.env.CHIV_PI_CODING_AGENT_DIR = tempDir;
+
+		expect(getAgentDir()).toBe(tempDir);
+		expect(getSettingsPath()).toBe(join(tempDir, "settings.json"));
+		expect(getSessionsDir()).toBe(join(tempDir, "sessions"));
+		expect(getDebugLogPath()).toBe(join(tempDir, "chiv-pi-debug.log"));
 	});
 });
 

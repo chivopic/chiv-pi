@@ -1,6 +1,6 @@
 # CLI Integration
 
-By default, running `pi` opens the interactive terminal interface. When input or output is piped or redirected, Pi uses print mode instead. You can also select print, JSON, or RPC mode explicitly for scripts and applications.
+By default, running `chiv-pi` opens the interactive terminal interface. When input or output is piped or redirected, chiv-pi uses print mode instead. You can also select print, JSON, or RPC mode explicitly for scripts and applications.
 
 All four modes use the same agent, sessions, resources, and tools. The mode determines how input enters Pi, how output is exposed, and whether the process remains available for more commands.
 
@@ -22,7 +22,7 @@ CLI options still select the working directory, model, tools, resources, and ses
 Print mode runs the supplied prompts, writes the final assistant text to stdout, and exits:
 
 ```bash
-pi --print "Summarize the changes in this repository"
+chiv-pi --print "Summarize the changes in this repository"
 ```
 
 Use print mode when only the final text is needed, including command substitution, pipelines, and one-shot jobs. Intermediate events are not exposed.
@@ -36,7 +36,7 @@ When no mode is selected explicitly, non-TTY stdin or stdout also selects print 
 JSON mode writes a session header followed by agent and session events as newline-delimited JSON:
 
 ```bash
-pi --mode json "Review this repository" > events.jsonl
+chiv-pi --mode json "Review this repository" > events.jsonl
 ```
 
 This is structured event output, not a single JSON result or a constraint on the format of the model’s response.
@@ -56,7 +56,7 @@ Stdout is reserved for JSONL. Diagnostics and application logging are written to
 RPC mode keeps Pi running while another process sends commands and receives responses and events:
 
 ```bash
-pi --mode rpc --no-session
+chiv-pi --mode rpc --no-session
 ```
 
 Commands are JSON objects written to stdin. Responses and events are JSON objects written to stdout. Every record occupies one line.
@@ -93,6 +93,8 @@ A source fork can change the CLI name and configuration directory through `packa
 ```
 
 Change the top-level `bin` field to set the executable name. These settings affect the CLI banner, configuration paths, and derived environment variable names.
+
+chiv-pi sets `name` to `chiv-pi`, `configDir` to `.chiv-pi`, and the executable name to `chiv-pi`. Punctuation in the app name becomes underscores in derived environment variables, producing `CHIV_PI_CODING_AGENT_DIR` and `CHIV_PI_CODING_AGENT_SESSION_DIR`.
 
 ## Examples and references
 

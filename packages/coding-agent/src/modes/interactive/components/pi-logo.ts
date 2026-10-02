@@ -1,4 +1,5 @@
 import { backgroundAnsi, foregroundAnsi, isAppleTerminalSession, rgbColor } from "@earendil-works/pi-tui";
+import { APP_NAME } from "../../../config.ts";
 import { theme } from "../theme/theme.ts";
 
 const CORAL = rgbColor(228, 138, 122);
@@ -26,15 +27,16 @@ export function piLogoLines(): [string, string] {
 }
 
 /**
- * Whether the terminal renders the half-block logo correctly. Apple Terminal draws gaps between rows and
- * misaligns the half blocks, so it gets the text wordmark instead.
+ * Whether to show the upstream logo. Rebrands use their app name as a text wordmark.
+ * Apple Terminal also uses the wordmark because it misaligns the half blocks.
  */
 export function supportsPiLogo(): boolean {
-	return !isAppleTerminalSession();
+	return APP_NAME === "pi" && !isAppleTerminalSession();
 }
 
-/** Text fallback for the logo: "Pi" with the logo's coral and yellow. */
+/** Text wordmark in the brand colors. */
 export function piWordmark(): string {
 	const mode = theme.getColorMode();
-	return `${foregroundAnsi(CORAL, mode)}P${RESET}${foregroundAnsi(YELLOW, mode)}i${RESET}`;
+	const wordmark = APP_NAME === "pi" ? "Pi" : APP_NAME;
+	return `${foregroundAnsi(CORAL, mode)}${wordmark[0]}${RESET}${foregroundAnsi(YELLOW, mode)}${wordmark.slice(1)}${RESET}`;
 }

@@ -1,5 +1,5 @@
 {
-	"name": "pi-monorepo",
+	"name": "chiv-pi-monorepo",
 	"private": true,
 	"type": "module",
 	"workspaces": [
@@ -11,6 +11,7 @@
 		"packages/coding-agent/examples/extensions/gondolin"
 	],
 	"scripts": {
+		"start": "node --import ./packages/coding-agent/src/experimental/source-resolver.ts ./packages/coding-agent/src/cli.ts",
 		"clean": "npm run clean --workspaces",
 		"build": "cd packages/chord && npm run build && cd ../tui && npm run build && cd ../telemetry && npm run build && cd ../codemode && npm run build && cd ../mcp && npm run build && cd ../ai && npm run build && cd ../durable && npm run build && cd ../agent && npm run build && cd ../protocol && npm run build && cd ../client && npm run build && cd ../server && npm run build && cd ../coding-agent && npm run build",
 		"build:offline": "cd packages/chord && npm run build && cd ../tui && npm run build && cd ../telemetry && npm run build && cd ../codemode && npm run build && cd ../mcp && npm run build && cd ../ai && npm run build:offline && cd ../durable && npm run build && cd ../agent && npm run build && cd ../protocol && npm run build && cd ../client && npm run build && cd ../server && npm run build && cd ../coding-agent && npm run build",

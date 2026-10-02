@@ -12,8 +12,8 @@ Provider API-key variables are documented separately in [Providers](providers.md
 
 The CLI and RPC entry points set two process markers:
 
-- `AI_AGENT=pi` is a generic marker that lets tooling identify Pi as the agent that launched the process.
-- `PI_CODING_AGENT=true` is Pi-specific and lets child processes detect that they run inside Pi.
+- `AI_AGENT=chiv-pi` lets tooling identify chiv-pi as the agent that launched the process.
+- `CHIV_PI_CODING_AGENT=true` lets child processes detect that they run inside chiv-pi.
 
 Child processes inherit both markers. They are not session-specific and are not set automatically when Pi is embedded through the SDK.
 
@@ -78,8 +78,8 @@ These variables are read by Pi itself:
 
 | Variable | Description |
 |----------|-------------|
-| `PI_CODING_AGENT_DIR` | Override the config directory; default is `~/.pi/agent` |
-| `PI_CODING_AGENT_SESSION_DIR` | Override session storage; overridden by `--session-dir` |
+| `CHIV_PI_CODING_AGENT_DIR` | Override the config directory; default is `~/.chiv-pi/agent` |
+| `CHIV_PI_CODING_AGENT_SESSION_DIR` | Override session storage; overridden by `--session-dir` |
 | `PI_PACKAGE_DIR` | Override the package directory, useful for Nix/Guix store paths |
 | `PI_OFFLINE` | Disable automatic network activity, including model catalog refreshes |
 | `PI_SKIP_VERSION_CHECK` | Disable the `pi.dev` latest-version request |

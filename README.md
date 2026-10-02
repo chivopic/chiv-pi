@@ -1,24 +1,47 @@
-<p align="center">
-  <a href="https://pi.dev">
-    <img alt="pi logo" src="https://pi.dev/logo-auto.svg" width="128">
-  </a>
-</p>
-<p align="center">
-  <a href="https://discord.com/invite/3cU7Bz4UPx"><img alt="Discord" src="https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white" /></a>
-  <a href="https://www.npmjs.com/package/@earendil-works/pi-coding-agent"><img alt="npm" src="https://img.shields.io/npm/v/@earendil-works/pi-coding-agent?style=flat-square" /></a>
-</p>
+# chiv-pi
 
-> New issues and PRs from new contributors are auto-closed by default. Maintainers review auto-closed issues daily. See [CONTRIBUTING.md](CONTRIBUTING.md).
+chiv-pi 是基于 [Pi v1.0.0](https://github.com/earendil-works/pi/tree/v1.0.0) 改造的终端 AI 编程助手，支持文件读写、命令执行、会话管理、模型切换和扩展。
 
-# Pi Agent Harness
+当前阶段完成应用品牌与源码入口定制。内部 npm 包名和托管服务仍沿用上游；上游 npm 包与安装器安装的是 Pi。独立发布与更新渠道尚未配置。
 
-This is the home of the Pi agent harness project including our self extensible coding agent.
+## 本地启动
 
-* **[@earendil-works/pi-coding-agent](packages/coding-agent)**: Interactive coding agent CLI
+需要 Node.js 22.19 或更新版本。在仓库根目录安装依赖并启动：
+
+```bash
+npm install --ignore-scripts
+npm run hydrate:model-data
+npm start
+```
+
+也可以从任意工作目录调用源码入口，它会保留调用时的工作目录：
+
+```bash
+/path/to/chiv-pi/chiv-pi
+/path/to/chiv-pi/chiv-pi --help
+```
+
+启动后使用 `/login` 配置模型服务，或设置服务商对应的 API key 环境变量。
+
+## 配置与会话
+
+| 用途 | 路径或环境变量 |
+|------|----------------|
+| 用户配置、凭据和资源 | `~/.chiv-pi/agent/` |
+| 项目配置和资源 | `<项目>/.chiv-pi/` |
+| 用户配置目录覆盖 | `CHIV_PI_CODING_AGENT_DIR` |
+| 会话目录覆盖 | `CHIV_PI_CODING_AGENT_SESSION_DIR` |
+| 子进程标记 | `AI_AGENT=chiv-pi`、`CHIV_PI_CODING_AGENT=true` |
+
+chiv-pi 使用独立配置目录，不会自动读取 `~/.pi/agent` 或项目中的 `.pi` 资源。需要的设置和扩展应放入对应的 `.chiv-pi` 目录。
+
+## Packages
+
+* **[@earendil-works/pi-coding-agent](packages/coding-agent)**: chiv-pi CLI and SDK; the internal package ID retains its upstream name
 * **[@earendil-works/pi-agent-core](packages/agent)**: Agent runtime with tool calling and state management
 * **[@earendil-works/pi-ai](packages/ai)**: Unified multi-provider LLM API (OpenAI, Anthropic, Google, …)
 
-To learn more about Pi:
+Upstream Pi references:
 
 * [Visit pi.dev](https://pi.dev), the project website with demos
 * [Read the documentation](https://pi.dev/docs/latest), but you can also ask the agent to explain itself
@@ -55,6 +78,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines and [AGENTS.m
 
 ```bash
 npm install --ignore-scripts  # Install all dependencies without running lifecycle scripts
+npm run hydrate:model-data  # Fetch the model catalog required to run from source
 npm run build         # Refresh model data, then build all packages
 npm run build:offline # Rebuild using existing model data without network access
 npm run check         # Lint, format, and type check
@@ -62,7 +86,7 @@ npm run check         # Lint, format, and type check
 ./pi-test.sh         # Run pi from sources (can be run from any directory)
 ```
 
-## Building standalone binaries from release source
+## Building upstream standalone binaries from release source
 
 GitHub releases include a versioned source archive covered by the release's `SHA256SUMS` file. Extract it and run the same build script used for the official standalone binaries:
 
@@ -107,7 +131,7 @@ I regularly publish my own `pi-mono` work sessions here:
 
 ## License
 
-MIT
+MIT. Based on [earendil-works/pi](https://github.com/earendil-works/pi); see [LICENSE](LICENSE) for the original copyright notice.
 
 <p align="center">
   <a href="https://pi.dev">pi.dev</a> domain graciously donated by

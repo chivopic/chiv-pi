@@ -1,13 +1,14 @@
 {
 	"name": "@earendil-works/pi-coding-agent",
 	"version": "1.0.0",
-	"description": "Coding agent CLI with read, bash, edit, write tools and session management",
+	"description": "chiv-pi coding agent CLI with read, bash, edit, write tools and session management",
 	"type": "module",
 	"piConfig": {
-		"configDir": ".pi"
+		"name": "chiv-pi",
+		"configDir": ".chiv-pi"
 	},
 	"bin": {
-		"pi": "dist/bundle/cli.js"
+		"chiv-pi": "dist/bundle/cli.js"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
